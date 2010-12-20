@@ -1,0 +1,32 @@
+<div id="profile">
+<h1>My profile</h1>
+  <%= error_messages_for :profile %>
+<% form_for(@profile) do |f| %>
+<fieldset class="shadow">
+  <p>
+    <%= f.label :first_name %><br />
+    <%= f.text_field :first_name, :size => 20, :class =>'input' %>
+  </p>
+  <p>
+    <%= f.label :last_name %><br />
+    <%= f.text_field :last_name, :size => 20, :class =>'input' %>
+  </p>
+  <p>
+    <%= f.label :height %> (inches)<br />
+    <%= f.text_field :height, :size => 20, :class =>'input' %>
+  </p>
+  <p>
+    <%= f.label :weight %> (pounds)<br />
+    <%= f.text_field :weight, :size => 20, :class =>'input' %>
+  </p>
+  <p>
+    <%= f.label :gender %><br />
+	<%= f.select :gender, %w{Male Female}, {}, {:class =>'select'} %>
+  </p>
+  <p>
+    <%= f.submit 'Update', :class =>'button' %>
+  </p>
+  </fieldset>
+  
+<% end %>
+</div>

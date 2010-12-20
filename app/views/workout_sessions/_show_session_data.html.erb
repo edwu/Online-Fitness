@@ -1,0 +1,54 @@
+<table>
+	<th>Exercise	    |</th>
+	<th>Planned Repetitions Per Set 	|</th>
+	<th>Planned Sets	|</th>
+	<th>Planned Weight	|</th>
+	<th>Planned Time	|</th>
+	<th>Incomplete Repetitions	|</th>
+	<th>Completed Sets	|</th>
+	<th>Lifted Weight	|</th>
+	<th>Completed Time	|</th>
+	<th>Remove Exercise</th>
+</tr>
+
+
+<% @exercise_list = @event.workout_sessions.find(:all, :joins => :exercise, :order => "name ASC")  %> 
+	<% @exercise_list.each do |exercise| %>
+		<tr>
+		<% @type = Exercise.find(exercise.exercise_id).exercise_type %>
+		<td><%=  Exercise.find(exercise.exercise_id).name %></td>
+		<% if @type != 'cardio' %>
+			<td><%= exercise.estimated_reps %></td>
+			<td><%= exercise.estimated_sets %></td>
+			<% if @type != 'calisthenics' %>
+				<td><%= exercise.estimated_weight %></td>
+			<% else %>
+				<td><%= "n/a" %> </td>
+			<% end %>
+			<td><%= "n/a" %> </td>
+			<td><%= exercise.workout_history.actual_reps %></td>
+			<td><%= exercise.workout_history.actual_sets %></td>
+			<% if @type != 'calisthenics' %>
+				<td><%= exercise.workout_history.actual_weight %></td>
+			<% else %>
+				<td><%= "n/a" %> </td>
+			<% end %>
+			<td><%= "n/a" %> </td>
+		<% else %>
+			<td><%= "n/a" %> </td>
+			<td><%= "n/a" %> </td>
+			<td><%= "n/a" %> </td>
+			<td><%= exercise.estimated_mins %></td>
+			<td><%= "n/a" %></td>
+			<td><%= "n/a" %></td>
+			<td><%= "n/a" %> </td>
+			<td><%= exercise.workout_history.actual_mins %></td>
+		<% end %>
+			
+		<td><%= link_to_remote 'Delete', :url => { :controller => "workout_sessions", :action => "destroy", :id => exercise.id, :event_id => @event.id}, :confirm => 'Are you sure?', :method => :delete, :complete => "$('#desc_dialog').dialog( 'option', 'width', 700 );addSession('#{@event.id}');$( '#desc_dialog' ).dialog( 'option', 'position', ['top','center']);return false" %></td>
+		
+		</tr>
+	<% end %>
+	
+</table>
+

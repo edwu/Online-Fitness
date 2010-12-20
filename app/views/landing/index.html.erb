@@ -1,0 +1,20 @@
+
+<div id="menu" class="center">
+<%= link_to_remote("Intensity of Your Workouts", :update => "description", :url => {:controller => :landing, :action=> :menu_one}) %> |
+<%= link_to_remote("The Calendar", :update => "description", :url => {:controller => :landing, :action=> :menu_two}) %> |
+<%= link_to_remote("Interactive Gui", :update => "description", :url => {:controller => :landing, :action=> :menu_three}) %>
+</div>
+<div id="description">
+<div class="image">
+<%= image_tag("/images/graph.jpg", :alt => "graph", :width => 450, :height => 270) %>
+</div>
+<div class="content">
+<h1>Intensity of Your Workouts</h1>
+	<p>We offer a variety of exercises that allow you to customize your workout. </p>
+	<p>We also offer many different types of graphs that follow the progress you are making with your workouts. </p>
+	<p>Furthermore, a handy dandy calendar is available to keep track of when you schedule your workouts. </p>
+	<p>Last but not least, an interactive UI makes it easy to create a workout!</p>
+</div>
+</div>
+
+

@@ -1,0 +1,22 @@
+body{
+  font-size: 12px;
+  font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+}
+
+#loading{
+  position: relative;  
+  top: -30px; 
+  background-color: #dd0000; 
+  font-weight:bold;
+  color: white; 
+  margin: 5px; 
+  padding: 3px;
+  float: right;
+  width: 65px;
+}
+
+
+h1{
+
+font-size: 16px;
+}

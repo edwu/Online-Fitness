@@ -1,0 +1,1 @@
+END_TIME = Date.parse("1 Jan, 2012").to_time #the end of the world.

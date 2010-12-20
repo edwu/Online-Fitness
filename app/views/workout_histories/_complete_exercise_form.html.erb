@@ -1,0 +1,29 @@
+<% @div_id = "exercise_%d" % @workout_session.id %>
+<% remote_form_for([@workout_session, @workout_history], :url => {:controller => "workout_histories", :action => :update, :workout_session_id => @workout_session.id, :id => @workout_history.id},  :complete => "$('##{@div_id}').effect('pulsate', { times:1 }, 200);return false") do |f| %>
+  <%= f.error_messages %>
+	<% @type = Exercise.find(@workout_session.exercise_id).exercise_type %>
+
+   	<% if  @type == 'cardio' %>  
+ 
+		<%= f.label 'Exercise Time' %>
+		<%= f.text_field :actual_mins, :size => 10, :class =>'input' %>
+	
+	<% else %>
+		
+		<%= f.label 'Completed Sets' %>
+		<%= f.text_field :actual_sets, :size => 10, :class =>'input' %>
+		
+		<%= f.label 'Remaining Repetitions'		%>
+		<%= f.text_field :actual_reps, :size => 10, :class =>'input' %>
+	 
+		<% if @type != 'calisthenics' %>
+			<%= f.label 'Weight Lifted' %>
+			<%= f.text_field :actual_weight, :size => 10, :class =>'input' %>
+		<% end %>
+		
+	<% end %>
+
+
+
+    <%= f.submit 'Update', :class => 'button2' %>
+<% end %>

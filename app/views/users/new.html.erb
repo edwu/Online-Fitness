@@ -1,0 +1,22 @@
+<div id="profile">
+<h1>Register</h1>
+  <%= error_messages_for :user %>
+<% form_for(@user) do |f| %>
+
+  <fieldset class="shadow">
+<p>
+    Username<br />
+    <%= f.text_field :login, :size => 20, :class =>'input' %>
+  </p>
+  <p>
+    <%= f.label :password %><br />
+    <%= f.password_field :password, :size => 20, :class =>'input' %>
+  </p>
+  <p>
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, :size => 20, :class =>'input' %>
+  </p>
+  <%= f.submit "Register", :class =>'button' %>
+  </fieldset>
+<% end %>
+</div>
